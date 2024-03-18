@@ -5,12 +5,9 @@ function saveMessageInLocalStorage(event) {
   const email = event.currentTarget.email.value.trim();
   const message = event.currentTarget.message.value.trim();
 
-  // Перевірка на наявність корисних даних
-  if (email !== "" && message !== "") {
-    inputForm.email = email;
-    inputForm.message = message;
-    localStorage.setItem("feedback-form-state", JSON.stringify(inputForm));
-  }
+  inputForm.email = email;
+  inputForm.message = message;
+  localStorage.setItem("feedback-form-state", JSON.stringify(inputForm));
 }
 
 if (localStorage.getItem("feedback-form-state")) {
@@ -26,6 +23,7 @@ function submitMessage(event) {
   const email = form.email.value.trim();
   const message = form.message.value.trim();
 
+  // Перевірка на наявність корисних даних перед збереженням
   if (email !== "" && message !== "") {
     console.log(JSON.parse(localStorage.getItem("feedback-form-state")));
     localStorage.removeItem("feedback-form-state");
